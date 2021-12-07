@@ -12,61 +12,50 @@ public class Node implements NodeData {
      */
     private int key;
     private GeoLocation location;
-    private double weight = Double.MAX_VALUE;
-    private String info = "White";
+    private double weight = 0;
+    private String info = "Black";
     private int tag = -1;
-    private static int uniqueKey = 0;
+    private static int StartKeys = 0;
 
     /**
      * Constructor.
      * @param l - geo_Location.
      */
     public Node(GeoLocation l){
-        this.key = uniqueKey++;
+        this.key = StartKeys++;
         this.location = l;
     }
-    @Override
-    public int getKey() {
-        return 0;
+    public Node(NodeData other) {
+        this.key = other.getKey();
+        this.location = new Geo_Location(other.getLocation());
+        this.weight = other.getWeight();
+        this.info = other.getInfo();
+        this.tag = other.getTag();
     }
-
     @Override
-    public GeoLocation getLocation() {
-        return null;
-    }
-
-    @Override
-    public void setLocation(GeoLocation p) {
-
-    }
+    public int getKey() {return this.key;}
 
     @Override
-    public double getWeight() {
-        return 0;
-    }
+    public GeoLocation getLocation() {return this.location;}
 
     @Override
-    public void setWeight(double w) {
-
-    }
+    public void setLocation(GeoLocation p) {this.location=new Geo_Location(p);}
 
     @Override
-    public String getInfo() {
-        return null;
-    }
+    public double getWeight() {return this.weight;}
 
     @Override
-    public void setInfo(String s) {
-
-    }
+    public void setWeight(double weight) {this.weight=weight;}
 
     @Override
-    public int getTag() {
-        return 0;
-    }
+    public String getInfo() {return this.info;}
 
     @Override
-    public void setTag(int t) {
+    public void setInfo(String str) {this.info=str;}
 
-    }
+    @Override
+    public int getTag() {return this.tag;}
+
+    @Override
+    public void setTag(int t) {this.tag=t;}
 }

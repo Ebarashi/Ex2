@@ -34,6 +34,10 @@ public class Node implements NodeData {
         this.tag = other.getTag();
     }
 
+    public Node(int id) {
+        this.key = id;
+    }
+
     @Override
     public int getKey() {return this.key;}
 

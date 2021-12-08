@@ -70,7 +70,7 @@ public class DWGraph implements DirectedWeightedGraph {
 
     @Override
     public EdgeData getEdge(int src, int dest) {
-        if(edges.containsKey(src)&& edges.containsValue(dest))
+        if(edges.containsKey(src) && edges.containsValue(dest))
         {
             return edges.get(src).get(dest);
         }

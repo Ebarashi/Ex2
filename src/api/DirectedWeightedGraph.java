@@ -9,7 +9,7 @@ import java.util.Iterator;
  * (should NOT be based on a n*n matrix).
  */
 
-public interface DirectedWeightedGraph {
+public interface  DirectedWeightedGraph {
 	/**
 	 * returns the node_data by the node_id,
 	 * @param key - the node_id

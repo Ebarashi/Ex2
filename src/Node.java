@@ -13,7 +13,7 @@ public class Node implements NodeData {
     private int key;
     private GeoLocation location;
     private double weight = 0;
-    private String info = "Black";
+    private String info = "White";
     private int tag = -1;
     private static int StartKeys = 0;
 
@@ -25,6 +25,7 @@ public class Node implements NodeData {
         this.key = StartKeys++;
         this.location = l;
     }
+    //deep copy constructor
     public Node(NodeData other) {
         this.key = other.getKey();
         this.location = new Geo_Location(other.getLocation());
@@ -32,6 +33,7 @@ public class Node implements NodeData {
         this.info = other.getInfo();
         this.tag = other.getTag();
     }
+
     @Override
     public int getKey() {return this.key;}
 

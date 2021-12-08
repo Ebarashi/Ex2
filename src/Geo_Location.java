@@ -19,5 +19,10 @@ public class Geo_Location implements api.GeoLocation{
     public double z() {return this.z;}
 
     @Override
-    public double distance(api.GeoLocation g) {return 0;}
+    public double distance(api.GeoLocation g) {
+        double X = Math.pow(this.x-g.x(),2);
+        double Y = Math.pow(this.y-g.y(),2);
+        double Z = Math.pow(this.z-g.z(),2);
+        return (Math.sqrt(X+Y+Z));
+    }
 }

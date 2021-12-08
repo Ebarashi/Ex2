@@ -1,4 +1,5 @@
 import api.*;
+import org.junit.jupiter.api.Test;
 
 public class Edge implements EdgeData{
 

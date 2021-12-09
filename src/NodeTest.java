@@ -30,9 +30,14 @@ public class NodeTest {
     @Test
     void setLocation() {
         n0.setLocation(g2);
-        assertEquals(g2, n0.getLocation());
+        assertEquals(-2, n0.getLocation().x());
+        assertEquals(5, n0.getLocation().y());
+        assertEquals(0, n0.getLocation().z());
+
         n2.setLocation(g3);
-        assertEquals(g3, n2.getLocation());
+        assertEquals(-9, n2.getLocation().x());
+        assertEquals(-4.5, n2.getLocation().y());
+        assertEquals(0, n2.getLocation().z());
     }
     @Test
     void getInfo() {

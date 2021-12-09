@@ -71,8 +71,7 @@ public class DWGraph implements DirectedWeightedGraph {
 
     @Override
     public EdgeData getEdge(int src, int dest) {
-        if(edges.containsKey(src) && edges.containsValue(dest))
-        {
+        if(nodes.containsKey(src)&& nodes.containsKey(dest)) {
             return edges.get(src).get(dest);
         }
             return null;
@@ -245,15 +244,16 @@ public class DWGraph implements DirectedWeightedGraph {
 
     @Override
     public NodeData removeNode(int key) {
-        NodeData temp = nodes.get(key);
+        NodeData temp = null;
         if(this.nodes.containsKey(key))
         {
+            temp= nodes.get(key);
             int size = edges.get(key).size();
             edges.remove(key);
             Edge_size -= size;
             MC += size;
-            edges.remove(key);
-            for (int i = 0; i<edges.size();i++)
+            Collection<Integer> c = edges.keySet();
+            for (int i :c)
             {
                 if(edges.get(i).containsKey(key))
                 {
@@ -262,11 +262,9 @@ public class DWGraph implements DirectedWeightedGraph {
                     MC ++;
                 }
             }
-            if(temp!=null) {
-                nodes.remove(key);
-                Node_size--;
-                MC++;
-            }
+            nodes.remove(key);
+            Node_size--;
+            MC++;
         }
         return temp;
     }

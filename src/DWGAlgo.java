@@ -71,7 +71,6 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         return dist;
     }
 
-
     @Override
     public List<NodeData> shortestPath(int src, int dest) {
         ArrayList <NodeData> al = new ArrayList<>();

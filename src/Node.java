@@ -2,14 +2,6 @@ import api.GeoLocation;
 import api.NodeData;
 
 public class Node implements NodeData {
-    /**
-     * Each node contains few fields:
-     * location: An object that represent the location of the node by 3d point.
-     * weight: A variable that is used in later functions, by default Initialized to Integer.MAX_VALUE(infinite).
-     * info: A variable that is used in later functions, by default Initialized to "White".
-     * tag: A variable that is used in later functions, by default Initialized to -1.
-     * key: A unique key that is used as each node's ID.
-     */
     private int key;
     private GeoLocation location;
     private double weight =Integer.MAX_VALUE;
@@ -17,13 +9,14 @@ public class Node implements NodeData {
     private int tag = 0;
     private static int StartKeys = 0;
 
-    /**
-     * Constructor.
-     * @param l - geo_Location.
-     */
+
     public Node(GeoLocation l){
         this.key = StartKeys++;
         this.location = l;
+    }
+    public Node(GeoLocation g, int id) {
+        this.key = id;
+        this.location = g;
     }
     //deep copy constructor
     public Node(NodeData other) {

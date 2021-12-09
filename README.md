@@ -13,6 +13,7 @@ It support a large number of nodes (over 100,000).
 
 DWGraph data structure:
 nodes- HashMap data structure that represents the group of nodes of this graph.
+
 edges- HashMap data structure that represents each node group of directed edges in this graph.
 
 # DWGAlgo class 
@@ -20,11 +21,11 @@ This class represents a directed weighted Graph and implement algorithms.
 
 <Algorithms>
 
-* shortestPathDist -->  Computes the the shortest path between src to dest 
+* shortestPathDist --> Computes the the shortest path between src to dest 
   
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
-* shortestPath -->  Computes the the shortest path between src to dest - as an ordered List of nodes: src--> n1-->n2-->...dest
+* shortestPath --> Computes the the shortest path between src to dest - as an ordered List of nodes: src--> n1-->n2-->...dest
   
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   

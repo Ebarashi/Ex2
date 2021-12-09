@@ -17,7 +17,7 @@ edges- HashMap data structure that represents each node group of directed edges 
 # DWGAlgo class 
 This class represents a directed weighted Graph and implement algorithms.
 
---> Algorithms:
+<--> Algorithms:>
 
 * shortestPathDist -->  Computes the the shortest path between src to dest 
   
@@ -31,8 +31,8 @@ This class represents a directed weighted Graph and implement algorithms.
   
   see: https://en.wikipedia.org/wiki/Graph_center 
   
-* tsp --> Computes a list of consecutive nodes which go over all the nodes in cities. the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of 
-  
+* tsp --> Computes a list of consecutive nodes which go over all the nodes in cities. the sum of the weights is the "cost" of the solution - the lower the better.
+ 
   see: https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
  # Helper algo

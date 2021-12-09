@@ -52,7 +52,7 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
             NodeData n = itN.next();
             boolean temp = this.BFS(n);
-            resetTag();
+            originTag();
             if (!temp) {
                 return false;
             }
@@ -62,9 +62,9 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
 
     @Override
     public double shortestPathDist(int src, int dest) {
-        resetInfo(); resetTag(); resetWeight();
+        originInfo(); originTag(); originWeight();
         double dist = Dijkstra(this.g.getNode(src), this.g.getNode(dest));
-        resetInfo(); resetTag(); resetWeight();
+        originInfo(); originTag(); originWeight();
         if (dist == Integer.MAX_VALUE) {
             return -1;
         }
@@ -95,7 +95,7 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         for (int i = reverseAL.size()- 1; i >= 0; i--) {
             al.add(reverseAL.get(i));
         }
-        resetInfo(); resetTag(); resetWeight();
+        originInfo(); originTag(); originWeight();
         return al;
     }
 
@@ -203,21 +203,21 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         return shortest;
     }
 
-    private void resetTag() {
+    private void originTag() {
         for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
             NodeData n = itN.next();
             n.setTag(0);
         }
 
     }
-    private void resetWeight() {
+    private void originWeight() {
             for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
                 NodeData n = itN.next();
                 n.setWeight(Double.MAX_VALUE);
             }
         }
 
-    private void resetInfo() {
+    private void originInfo() {
         for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext();) {
             NodeData n = itN.next();
             n.setInfo("White");

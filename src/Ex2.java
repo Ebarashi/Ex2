@@ -11,11 +11,11 @@ public class Ex2 {
      * @return
      */
     public static DirectedWeightedGraph getGrapg(String json_file) {
-        DirectedWeightedGraph ans = null;
-        // ****** Add your code here ******
-        //
-        // ********************************
-        return ans;
+        DirectedWeightedGraph ans = new DWGraph();
+        DWGAlgo gAlgo = new DWGAlgo();
+        gAlgo.init(ans);
+        gAlgo.load(json_file);
+        return gAlgo.getGraph();
     }
     /**
      * This static function will be used to test your implementation
@@ -23,11 +23,11 @@ public class Ex2 {
      * @return
      */
     public static DirectedWeightedGraphAlgorithms getGrapgAlgo(String json_file) {
-        DirectedWeightedGraphAlgorithms ans = null;
-        // ****** Add your code here ******
-        //
-        // ********************************
-        return ans;
+        DirectedWeightedGraph ans = new DWGraph();
+        DWGAlgo gAlgo = new DWGAlgo();
+        gAlgo.init(ans);
+        gAlgo.load(json_file);
+        return gAlgo;
     }
     /**
      * This static function will run your GUI using the json fime.

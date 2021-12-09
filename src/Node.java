@@ -12,9 +12,9 @@ public class Node implements NodeData {
      */
     private int key;
     private GeoLocation location;
-    private double weight = 0;
+    private double weight =Integer.MAX_VALUE;
     private String info = "White";
-    private int tag = -1;
+    private int tag = 0;
     private static int StartKeys = 0;
 
     /**

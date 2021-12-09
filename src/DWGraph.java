@@ -11,15 +11,16 @@ public class DWGraph implements DirectedWeightedGraph {
    // private Iterator<EdgeData> EIter;
    // private Iterator<NodeData> NIter;
     private int MC;
-    private int numNodes;
-    private int numEdges;
+    private int Node_size;
+    private int Edge_size;
+
 
     public DWGraph(){
         this.nodes= new HashMap<Integer,NodeData>();
         this.edges = new HashMap<Integer,HashMap<Integer,EdgeData>>();
         this.MC = 0;
-        this.numNodes = 0;
-        this.numEdges = 0;
+        this.Node_size = 0;
+        this.Edge_size = 0;
 
     }
 
@@ -28,8 +29,8 @@ public class DWGraph implements DirectedWeightedGraph {
         this.edges = new HashMap<Integer,HashMap<Integer,EdgeData>>();
         NCopy(Other_graph, this.nodes);
         ECopy(Other_graph, this.edges);
-        this.numEdges = Other_graph.edgeSize();
-        this.numNodes = Other_graph.nodeSize();
+        this.Edge_size = Other_graph.edgeSize();
+        this.Node_size = Other_graph.nodeSize();
     }
 
     private void NCopy(DirectedWeightedGraph other, HashMap nodes) {
@@ -85,7 +86,7 @@ public class DWGraph implements DirectedWeightedGraph {
         nodes.put(n.getKey(), (Node)n);
         edges.put(n.getKey(), new HashMap<Integer,EdgeData>());
         MC++;
-        numNodes++;
+        Node_size++;
     }
 
     @Override
@@ -101,7 +102,7 @@ public class DWGraph implements DirectedWeightedGraph {
            EdgeData e = new Edge(src, dest, w);
             edges.get(src).put(dest, e);
             MC++;
-            numEdges++;
+            Edge_size++;
         }
     }
 
@@ -147,11 +148,11 @@ public class DWGraph implements DirectedWeightedGraph {
         return new Iterator<EdgeData>() {
             int innerMC = MC;
             final Iterator <Integer> src = edges.keySet().iterator();
-            final int FirstN = edges.keySet().iterator().next();
-            Iterator<EdgeData> currNode = edgeIter(FirstN);
-             EdgeData currEdge ;
-             EdgeData temp ;
-             int currSrc = FirstN;
+            //final int FirstN = edges.keySet().iterator().next();
+            Iterator<EdgeData> currNode = edgeIter(src.next());
+             EdgeData currEdge;
+             EdgeData temp;
+             int currSrc = 0;
 
                 @Override
                 public boolean hasNext() {
@@ -249,7 +250,7 @@ public class DWGraph implements DirectedWeightedGraph {
         {
             int size = edges.get(key).size();
             edges.remove(key);
-            numEdges -= size;
+            Edge_size -= size;
             MC += size;
             edges.remove(key);
             for (int i = 0; i<edges.size();i++)
@@ -257,13 +258,13 @@ public class DWGraph implements DirectedWeightedGraph {
                 if(edges.get(i).containsKey(key))
                 {
                     edges.get(i).remove(key);
-                    numEdges --;
+                    Edge_size--;
                     MC ++;
                 }
             }
             if(temp!=null) {
                 nodes.remove(key);
-                numNodes--;
+                Node_size--;
                 MC++;
             }
         }
@@ -277,7 +278,7 @@ public class DWGraph implements DirectedWeightedGraph {
         {
             return null;
         }
-        numEdges--;
+        Edge_size--;
         MC++;
         return edge;
     }
@@ -285,12 +286,12 @@ public class DWGraph implements DirectedWeightedGraph {
 
     @Override
     public int nodeSize() {
-        return this.numNodes;
+        return this.Node_size;
     }
 
     @Override
     public int edgeSize() {
-        return this.numEdges;
+        return this.Edge_size;
     }
 
     @Override

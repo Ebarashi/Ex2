@@ -8,8 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
 
@@ -21,6 +20,16 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
 
     @Override
     public void init(DirectedWeightedGraph g) {
+        this.g = new DWGraph();
+        Iterator <NodeData> NIter = g.nodeIter();
+        while(NIter.hasNext()){
+            this.g.addNode(NIter.next());
+        }
+        Iterator <EdgeData> EIter = g.edgeIter();
+        while(EIter.hasNext()){
+            EdgeData e = EIter.next();
+            this.g.connect(e.getSrc(), e.getDest(), e.getWeight());
+        }
         this.g = g;
     }
 
@@ -35,57 +44,17 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
     }
 
 
-    public void DFS(DirectedWeightedGraph g, NodeData u) {
-        u.setTag(1); //color is grey
-        Iterator<EdgeData> eIterator = g.edgeIter(u.getKey());
-        while (eIterator.hasNext()) {
-            EdgeData vEdge = eIterator.next();
-            int vKey = vEdge.getDest();
-            Node v = (Node) g.getNode(vKey);
-            if (v.getTag() == 0) {
-                DFS(g, v);
-            }
-        }
-        u.setTag(2);  //color is black
-    }
-
-    //receives a graph and returns the transpose of that graph
-    public DirectedWeightedGraph Transpose(DirectedWeightedGraph g) {
-        DirectedWeightedGraph gt = new DWGraph(g);
-        Iterator<EdgeData> edgeIt = g.edgeIter();
-        while (edgeIt.hasNext()) {
-            EdgeData eIt = edgeIt.next();
-            //  gt.removeEdge(eIt.getSrc(), eIt.getDest());
-            gt.connect(eIt.getDest(), eIt.getSrc(), eIt.getWeight());
-        }
-        return gt;
-    }
-
     @Override
     public boolean isConnected() {
-        NodeData n = g.getNode(0); //any node to start
-        DFS(g, n);
-        Iterator<NodeData> nIterator = g.nodeIter(); //goes through all nodes in graph
-        while (nIterator.hasNext()) {
-            NodeData gNode = nIterator.next();
-            if (gNode.getTag() == 0) //color of node is white, so hasn't been touched
-            {
-                return false; //not connected
-            }
+        if (this.g.nodeSize() == 0) {
+            return true;
         }
-        Iterator<NodeData> nIterator2 = g.nodeIter(); //goes through all nodes in graph
-        while (nIterator2.hasNext()) {
-            NodeData gNode2 = nIterator2.next();
-            gNode2.setTag(0); //resets to zero
-        }
-        DirectedWeightedGraph gt = Transpose((DirectedWeightedGraph) g); //tranposes the graph
-        DFS(gt, n); //dfs again
-        Iterator<NodeData> gtIterator = gt.nodeIter(); //goes through all nodes in graph
-        while (gtIterator.hasNext()) {
-            NodeData gtNode = gtIterator.next();
-            if (gtNode.getTag() == 0) //color of node is white, so hasn't been touched
-            {
-                return false; //not connected
+        for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
+            NodeData n = itN.next();
+            boolean temp = this.BFS(n);
+            resetTag();
+            if (!temp) {
+                return false;
             }
         }
         return true;
@@ -93,13 +62,44 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
 
     @Override
     public double shortestPathDist(int src, int dest) {
-        return 0;
+        resetInfo(); resetTag(); resetWeight();
+        double dist = Dijkstra(this.g.getNode(src), this.g.getNode(dest));
+        resetInfo(); resetTag(); resetWeight();
+        if (dist == Integer.MAX_VALUE) {
+            return -1;
+        }
+        return dist;
     }
+
 
     @Override
     public List<NodeData> shortestPath(int src, int dest) {
-        return null;
+        ArrayList <NodeData> al = new ArrayList<>();
+        if (shortestPathDist(src, dest) == -1) {
+            return null;
+        }
+        if (src == dest) {
+            al.add(this.g.getNode(src));
+            return al;
+        }
+        Dijkstra(this.g.getNode(src), this.g.getNode(dest));
+        NodeData Nsrc = this.g.getNode(src);
+        NodeData Ndest = this.g.getNode(dest);
+        ArrayList <NodeData> reverseAL = new ArrayList<>();
+        NodeData temp = Ndest;
+        while (temp.getTag() != 0) {
+            reverseAL.add(temp);
+            temp = this.g.getNode(temp.getTag());
+        }
+       // NodeData[] arr = reverseAL.toArray(NodeData[]::new);
+        al.add(Nsrc);
+        for (int i = reverseAL.size()- 1; i >= 0; i--) {
+            al.add(reverseAL.get(i));
+        }
+        resetInfo(); resetTag(); resetWeight();
+        return al;
     }
+
 
     @Override
     public NodeData center() {
@@ -156,6 +156,76 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         }
         init(newG);
         return true;
+    }
+
+    private boolean BFS(NodeData n) {
+        Queue<NodeData> q = new LinkedList<>();
+        n.setTag(1);
+        int counter = 1;
+        q.add(n);
+        while (!q.isEmpty()) {
+            NodeData temp = q.peek();
+            for (Iterator<EdgeData> itN = g.edgeIter(temp.getKey()); itN.hasNext(); ) {
+                EdgeData next = itN.next();
+                NodeData dest = this.g.getNode(next.getDest());
+                if (dest.getTag() == 0) {
+                    dest.setTag(1);
+                    q.add(dest);
+                    counter++;
+                }
+            }
+        }
+        return (counter == this.g.nodeSize());
+    }
+
+    private double Dijkstra(NodeData src, NodeData dest) {
+        double shortest = Integer.MAX_VALUE;
+        PriorityQueue<NodeData> pq = new PriorityQueue<>(this.g.nodeSize(), Comparator.comparingDouble(NodeData::getWeight));
+        src.setWeight(0.0);
+        pq.add(src);
+        while (!pq.isEmpty()) {
+            NodeData temp = pq.poll();
+            for (Iterator<EdgeData> itE = g.edgeIter(temp.getKey()); itE.hasNext(); ) {
+                EdgeData e = itE.next();
+                NodeData n = this.g.getNode(e.getDest());
+                if (Objects.equals(n.getInfo(), "White")) {
+                    if (n.getWeight() > temp.getWeight() + e.getWeight()) {
+                        n.setWeight(Math.min(n.getWeight(), temp.getWeight() + e.getWeight()));
+                        n.setTag(temp.getKey());
+                    }
+                    pq.add(n);
+                }
+            }
+            temp.setInfo("Black");
+            if (temp.getKey() == dest.getKey()) {
+                return temp.getWeight();
+            }
+        }
+        return shortest;
+    }
+
+    private void resetTag() {
+        for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
+            NodeData n = itN.next();
+            n.setTag(0);
+        }
 
     }
+    private void resetWeight() {
+            for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
+                NodeData n = itN.next();
+                n.setWeight(Double.MAX_VALUE);
+            }
+        }
+
+    private void resetInfo() {
+        for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext();) {
+            NodeData n = itN.next();
+            n.setInfo("White");
+        }
+    }
+
+
+
+
 }

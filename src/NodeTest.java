@@ -18,8 +18,8 @@ public class NodeTest {
 
     @Test
     void getTag() {
-        assertEquals(-1, n2.getTag());
-        assertEquals(-1, n0.getTag());
+        assertEquals(0, n2.getTag());
+        assertEquals(0, n0.getTag());
     }
     @Test
     void getLocation() {

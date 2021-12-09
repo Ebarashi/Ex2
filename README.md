@@ -20,15 +20,19 @@ This class represents a directed weighted Graph and implement algorithms.
 --> Algorithms:
 
 * shortestPathDist -->  Computes the the shortest path between src to dest 
+  
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
 * shortestPath -->  Computes the the shortest path between src to dest - as an ordered List of nodes: src--> n1-->n2-->...dest
+  
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
 * center --> Finds the NodeData which minimizes the max distance to all the other nodes.
+  
   see: https://en.wikipedia.org/wiki/Graph_center 
   
 * tsp --> Computes a list of consecutive nodes which go over all the nodes in cities. the sum of the weights of all the consecutive (pairs) of nodes (directed) is the "cost" of 
+  
   see: https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
  # Helper algo

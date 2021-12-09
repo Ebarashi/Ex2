@@ -12,9 +12,10 @@ This class implement an directional weighted graph using HashMap data structure.
 It support a large number of nodes (over 100,000). 
 
 DWGraph data structure:
+
 nodes- HashMap data structure that represents the group of nodes of this graph.
 
-edges- HashMap data structure that represents each node group of directed edges in this graph.
+edges- HashMap data structure that represents for each node a group of directed edges from him in this graph.
 
 # DWGAlgo class 
 This class represents a directed weighted Graph and implement algorithms.

@@ -2,7 +2,8 @@
 
 By: Eilon Barashi, Harel Giladi
 
-The project:
+# The project
+
 In this project we have implemented a Directed Weighted Graph,a GUI that represent a loaded graphs using a JSON file and algorithms. 
 We were asked to be able to generate large graphs up to 10,000 nodes and  to be able to run algorithms efficiently on our graph.
 

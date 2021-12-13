@@ -1,11 +1,12 @@
 import api.DirectedWeightedGraph;
 import api.EdgeData;
 import api.NodeData;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.Iterator;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
@@ -17,6 +18,7 @@ class DWGraphTest {
     Node n4 ;
     DirectedWeightedGraph gr1 ;
     DWGraph gr2;
+    DWGraph test;
 
     @BeforeEach
      void add_nodes_edges(){
@@ -27,6 +29,7 @@ class DWGraphTest {
 
         gr1 = new DWGraph();
         gr2 = new DWGraph();
+        test = new DWGraph();
         gr1.addNode(n1);
         gr1.addNode(n2);
         gr1.addNode(n3);
@@ -36,6 +39,16 @@ class DWGraphTest {
         gr1.connect(0,3,9);
         gr1.connect(1,2,4);
         gr1.connect(1,0,4);
+
+        test.addNode(n1);
+        test.addNode(n2);
+        test.addNode(n3);
+        test.addNode(n4);
+        test.connect(0,1,3);
+        test.connect(0,2,6);
+        test.connect(0,3,9);
+        test.connect(1,2,4);
+        test.connect(1,0,4);
 
         gr2.addNode(n1);
         gr2.addNode(n2);
@@ -132,6 +145,11 @@ class DWGraphTest {
         }
         assertEquals(4,count);
         assertEquals(n4, temp);
+        for (Iterator<NodeData> itN = test.nodeIter(); itN.hasNext(); ) {
+            NodeData n = itN.next();
+            itN.remove();
+        }
+        assertEquals(test.nodeSize(),0);
 
     }
 
@@ -144,6 +162,12 @@ class DWGraphTest {
 //        gr1.addNode(n4);
 //        gr1.connect(0,1,3);
 //        gr1.connect(1,2,4);
+        Iterator<EdgeData> e = test.edgeIter();
+        for (Iterator<EdgeData> itE = e; itE.hasNext(); ) {
+            itE.next();
+            itE.remove();
+        }
+       assertEquals(test.edgeSize(),0);
         Iterator<EdgeData> eit = gr1.edgeIter();
         int count=0;
         EdgeData temp=null;
@@ -156,7 +180,7 @@ class DWGraphTest {
         assertEquals(1, temp.getSrc());
         assertEquals(2, temp.getDest());
         assertEquals(4, temp.getWeight());
-    }
+  }
 
     @Test
     void EdgeIterNode() {
@@ -169,23 +193,34 @@ class DWGraphTest {
 //        gr1.connect(1,2,4);
 //        gr1.connect(0,2,6);
 //        gr1.connect(0,3,9);
+        Iterator<NodeData> nit = test.nodeIter();
+            Iterator<EdgeData> e = test.edgeIter(nit.next().getKey());
+            for (Iterator<EdgeData> itE = e; itE.hasNext(); ) {
+                itE.next();
+                itE.remove();
+            }
+
+        assertEquals(test.edgeSize(), 2);
         Iterator<EdgeData> eit = gr1.edgeIter(0);
-        EdgeData temp=null;
-        int count=0;
+        EdgeData temp = null;
+        int count = 0;
         for (Iterator<EdgeData> it = eit; it.hasNext(); ) {
             temp = it.next();
             count++;
         }
-        assertEquals(3,count);
+        assertEquals(3, count);
         assertEquals(0, temp.getSrc());
         assertEquals(3, temp.getDest());
         assertEquals(9, temp.getWeight());
-    }
+
+
+   }
+
 
 
     @Test
     void removeNode() {
-
+//hello
 //        gr1.addNode(n1);
 //        gr1.addNode(n2);
 //        gr1.addNode(n3);

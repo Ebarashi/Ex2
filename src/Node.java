@@ -1,12 +1,13 @@
 import api.GeoLocation;
 import api.NodeData;
 
-public class Node implements NodeData {
+public class Node implements NodeData ,Comparable<Node> {
+
     private int key;
     private GeoLocation location;
-    private double weight =Integer.MAX_VALUE;
+    private double weight =Double.MAX_VALUE;
     private String info = "White";
-    private int tag = 0;
+    private int tag = -1;
     private static int StartKeys = 0;
 
 
@@ -57,4 +58,19 @@ public class Node implements NodeData {
 
     @Override
     public void setTag(int t) {this.tag=t;}
+
+    @Override
+    public int compareTo(Node o) {
+        return Double.compare(this.getWeight(),o.getWeight());
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "key=" + key +
+//                ", weight=" + weight +
+//                ", info='" + info + '\'' +
+//                ", tag=" + tag +
+                '}';
+    }
 }

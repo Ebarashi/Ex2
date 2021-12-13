@@ -20,10 +20,15 @@ edges- HashMap data structure that represents for each node a group of directed 
 # DWGAlgo class 
 This class represents a directed weighted Graph and implement algorithms.
 
-<Algorithms>
+**_Algorithms_:**
+
+
+* isConnected --> Returns true if and only if  there is a valid path from each node to each other node
+
+  see: https://en.wikipedia.org/wiki/Shortest_path_problem
 
 * shortestPathDist --> Computes the the shortest path between src to dest 
-  
+
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
 * shortestPath --> Computes the the shortest path between src to dest - as an ordered List of nodes: src--> n1-->n2-->...dest

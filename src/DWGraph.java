@@ -110,7 +110,7 @@ public class DWGraph implements DirectedWeightedGraph {
     public Iterator<NodeData> nodeIter() {
        return new Iterator<NodeData>() {
            int innerMC = MC;
-           final Iterator<NodeData> NIter = nodes.values().iterator();
+           Iterator<NodeData> NIter = nodes.values().iterator();
            NodeData temp;
 
            @Override
@@ -137,6 +137,7 @@ public class DWGraph implements DirectedWeightedGraph {
                } else if (temp!=null){
                    removeNode(temp.getKey());
                    innerMC = MC;
+                   NIter = nodes.values().iterator();
                }
            }
         };
@@ -146,8 +147,7 @@ public class DWGraph implements DirectedWeightedGraph {
     public Iterator<EdgeData> edgeIter() {
         return new Iterator<EdgeData>() {
             int innerMC = MC;
-            final Iterator <Integer> src = edges.keySet().iterator();
-            //final int FirstN = edges.keySet().iterator().next();
+            Iterator <Integer> src = edges.keySet().iterator();
             Iterator<EdgeData> currNode = edgeIter(src.next());
              EdgeData currEdge;
              EdgeData temp;
@@ -191,16 +191,10 @@ public class DWGraph implements DirectedWeightedGraph {
                     if (currEdge!=null){
                         removeEdge(currEdge.getSrc(), currEdge.getDest());
                         innerMC = MC;
+                        src = edges.keySet().iterator();
+                        currNode = edgeIter(src.next());
                     }
-                    /*EdgeData last = temp;
-                    int lastSrc = currSrc;
-                    edgeIter();
-                    while (currEdge != last) {
-                        currNode.next();
-                    }
-                    while (currSrc != lastSrc){
-                        src.next();
-                    }*/
+
                 }
             };
 
@@ -210,7 +204,7 @@ public class DWGraph implements DirectedWeightedGraph {
     public Iterator<EdgeData> edgeIter(int node_id) {
         return new Iterator<EdgeData>() {
             private int innerMC = MC;
-           final Iterator<EdgeData> EIter = edges.get(node_id).values().iterator();
+            Iterator<EdgeData> EIter = edges.get(node_id).values().iterator();
             EdgeData temp ;
             @Override
             public boolean hasNext() {
@@ -237,6 +231,7 @@ public class DWGraph implements DirectedWeightedGraph {
                 if (temp!=null){
                     removeEdge(temp.getSrc(), temp.getDest());
                     innerMC = MC;
+                    EIter = edges.get(node_id).values().iterator();
                 }
             }
         };
@@ -292,8 +287,33 @@ public class DWGraph implements DirectedWeightedGraph {
         return this.Edge_size;
     }
 
+
     @Override
     public int getMC() {
         return this.MC;
+    }
+
+    public static void main(String[] args) {
+        DWGraph gr1 = new DWGraph();
+        Node n1 = new Node(new Geo_Location(3,3,0));
+        Node n2 = new Node(new Geo_Location(-4,-4,0));
+        Node n3 = new Node(new Geo_Location(5,-7.5,0));
+        Node n4 = new Node(new Geo_Location(-2.4,1.3,0));
+
+        gr1.addNode(n1);
+        gr1.addNode(n2);
+        gr1.addNode(n3);
+        gr1.addNode(n4);
+        gr1.connect(0,1,3);
+        gr1.connect(0,2,6);
+        gr1.connect(0,3,9);
+        gr1.connect(1,2,4);
+        gr1.connect(1,0,4);
+        System.out.println(gr1.nodeSize());
+        for (Iterator<NodeData> itN = gr1.nodeIter(); itN.hasNext(); ) {
+            NodeData n = itN.next();
+            itN.remove();
+        }
+        System.out.println(gr1.nodeSize());
     }
 }

@@ -54,7 +54,7 @@ see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 
 | Json         | isConnected    | center        | tsp         |
-| :---         |     :---:      |          ---: |        ---: |
+| :---         |     :---:      |          ---: |       :---: |
 | G1           | git status     | git status    |             |
 | G2           | git diff       | git diff      |             |
 | G3           |                |               |             |

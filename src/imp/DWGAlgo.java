@@ -216,6 +216,7 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         }
         return al;
     }
+// other method that return the cities in right order and not the path between them like above
 //        ArrayList<NodeData> al = new ArrayList();
 //        ArrayList<NodeData> copy = new ArrayList();
 //        for (NodeData c : cities) {

@@ -4,7 +4,7 @@ By: Eilon Barashi, Harel Giladi
 
 # The project
 
-In this project we have implemented a Directed Weighted Graph,and a GUI that represent a loaded graphs using a JSON file and algorithms. 
+In this project we have implemented a Directed Weighted Graph,and a GUI that represent a loaded graphs using a JSON file, and algorithms. 
 We were asked to be able to generate large graphs up to 10,000 nodes and  to be able to run algorithms efficiently on our graph.
 
 # imp.DWGraph class 
@@ -23,7 +23,7 @@ This class represents a directed weighted Graph and implement algorithms.
 **_Algorithms_:**
 
 
-* isConnected --> Returns true if and only if  there is a valid path from each node to each other node
+* isConnected --> Returns true if and only if  there is a valid path from each node to any other node
 
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
 
@@ -31,7 +31,7 @@ This class represents a directed weighted Graph and implement algorithms.
 
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
-* shortestPath --> Computes the the shortest path between src to dest - as an ordered List of nodes: src--> n1-->n2-->...dest
+* shortestPath --> Computes the the shortest path between src to dest - and returns ordered List of nodes: src--> n1-->n2-->...dest
   
   see: https://en.wikipedia.org/wiki/Shortest_path_problem
   
@@ -44,7 +44,7 @@ This class represents a directed weighted Graph and implement algorithms.
   see: https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
  # Helper algo
-+ BFS - The algorithm checks whether or not the graph is strongly linked, in other words it checks whether there is a path between node to each other node. 
++ BFS - The algorithm checks whether or not the graph is strongly linked, in other words it checks whether there is a path between each node to any other node. 
 
 see: https://en.wikipedia.org/wiki/Breadth-first_search
 

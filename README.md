@@ -55,7 +55,7 @@ see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 # The Algorythmes' Results 
 
 
-| Json         | isConnected    | center        | tsp - cities <all nodes>         |
+| Json         | isConnected    | center        | tsp - cities --> all nodes       |
 | :---         |     :---:      |          ---: |       :---:                      |
 | G1           | 42 ms          | 45 ms         |  42 ms                           |
 | G2           | 42 ms          | 41 ms         |  58 ms                           |

@@ -40,7 +40,7 @@ public class Ex2 {
     public static void runGUI(String json_file) {
         DirectedWeightedGraphAlgorithms alg = getGrapgAlgo(json_file);
         mainGui gui;
-        if (json_file!=null)
+        if (json_file.length()>0)
              gui = new mainGui(json_file);
         gui = new mainGui();
         gui.showWindow();
@@ -48,7 +48,7 @@ public class Ex2 {
     }
     public static void main(String[] args) {
         if (args.length < 1){
-            runGUI(null);
+            runGUI("");
         }
         else{
             runGUI(args[0]);

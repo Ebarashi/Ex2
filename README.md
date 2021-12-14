@@ -49,3 +49,11 @@ see: https://en.wikipedia.org/wiki/Breadth-first_search
 
 + Dijkstra's algorithm - an algorithm for finding the shortest paths between nodes in a graph. The method uses the weight of each node to update his current distance from the source node.
 see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
+
+# The Algorythmes' Results 
+
+
+|      G3       |  1000          | 10000
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |

@@ -395,15 +395,6 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
         return shortest;
     }
 
-
-    private void originTag() {
-        for (Iterator<NodeData> itN = g.nodeIter(); itN.hasNext(); ) {
-            NodeData n = itN.next();
-            n.setTag(-1);
-        }
-
-    }
-
     /**
      * init all the fields to default
      */

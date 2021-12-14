@@ -45,7 +45,7 @@ class DWGAlgoTest {
         long end = new Date().getTime();
         double time = (end - start) / 1000.0;
         assertTrue(time<1);
-        System.out.println("isConnected: " + time);
+
 
     }
 
@@ -146,7 +146,6 @@ class DWGAlgoTest {
         gr.tsp(other_cities);
         long end = new Date().getTime();
         double time = (end - start) / 1000.0;
-        System.out.println("tsp :" + time);
         assertTrue(time < 600);
 
 

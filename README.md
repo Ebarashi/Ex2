@@ -67,6 +67,8 @@ see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 # UML
 
 
+![Ex2_uml](https://user-images.githubusercontent.com/93948749/145995895-2900aad5-9469-494d-b62f-29ce900e280e.png)
+
 # GUI Example
 
 

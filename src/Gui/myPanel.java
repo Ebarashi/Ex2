@@ -37,7 +37,6 @@ public class myPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         scale();
-        System.out.println(minx+" "+maxx+"  \n"+miny +"  "+maxy);
 
         for (Iterator<NodeData> nit = graphAlgo.getGraph().nodeIter(); nit.hasNext(); ) {
             NodeData temp2 = nit.next();

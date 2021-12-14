@@ -40,9 +40,12 @@ public class Ex2 {
         DirectedWeightedGraphAlgorithms alg;
         if (json_file.length()>0 ){
             alg = getGrapgAlgo(json_file);
-            gui = new mainGui(json_file);}
-        gui = new mainGui();
-        gui.showWindow();
+            gui = new mainGui(json_file);
+            gui.showWindow();
+        }
+        else {
+            gui = new mainGui();
+            gui.showWindow();}
 
     }
     public static void main(String[] args) {

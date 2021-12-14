@@ -1,6 +1,5 @@
 package Gui;
 
-
 public class mainGui
 {
     private myFrame frame;

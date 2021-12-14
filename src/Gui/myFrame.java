@@ -22,7 +22,8 @@ public class myFrame  extends JFrame implements ActionListener {
     public myFrame() {
         super();
         toScreen = new JLabel("(be sure to delete the entire contents of the textbox including spaces before adding a new value)answers:");
-        toScreen.setBackground(Color.red);
+        toScreen.setBackground(Color.black);
+        toScreen.setForeground(Color.red);
         toScreen.setOpaque(true);
         initFrame();
         panel=new myPanel();
@@ -38,6 +39,7 @@ public class myFrame  extends JFrame implements ActionListener {
         initFrame();
         panel = new myPanel(gPath);
         initPanel();
+        panel.repaint();
         addMenu();
     }
 

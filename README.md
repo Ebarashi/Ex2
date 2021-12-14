@@ -75,3 +75,4 @@ see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 
 # Jar
+type in terminal the command java -jar Ex2.jar "graph.json"

@@ -93,14 +93,14 @@ class DWGraphTest {
         //adds by shallow copy so assert by address is enough
     void getNode() {
 
-//        gr1.addNode(n1);
-//        gr1.addNode(n2);
-//        gr1.addNode(n3);
+        gr1.addNode(n1);
+        gr1.addNode(n2);
+        gr1.addNode(n3);
         assertEquals(n3,gr1.getNode(2));
 
-//        gr2.addNode(n1);
-//        gr2.addNode(n2);
-//        gr2.addNode(n3);
+        gr2.addNode(n1);
+        gr2.addNode(n2);
+        gr2.addNode(n3);
         assertEquals(n3,gr2.getNode(2));
     }
 

@@ -49,7 +49,7 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
     }
 
     /**
-     * We will use the bfs algorithm which checks if it is possible to reach from any vertex to any vertex.
+     * We will use bfs algorithm which checks if it is possible to reach from any vertex to any vertex.
      * for a specific vertex if the whole graph is painted black and so is the converse graph with the same vertex
      * then the graph isConnected
      * * @return true if and only if (iff) there is a valid path from each node to each
@@ -101,7 +101,7 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
     }
 
     /**
-     * Computes the the shortest path between src to dest - as an ordered List of nodes
+     * Computes the shortest path between src to dest - as an ordered List of nodes
      * This function uses  Dijkstra Algorithm.
      * The algorithm initializes each vertex from whom it came and then we extract while running backwards all the ancestors of the vertices
      * then return the list in the correct order
@@ -140,10 +140,10 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
     }
 
     /**
-     * This function uses an Dijkstra-algorithm.
+     * This function uses a Dijkstra-algorithm.
      * We will run with a vertex that does not exist.
      * the algorithm initialize all the vertices' weights to the shortest way to them from the source.
-     * from the source vertex we find the longest way to a target vertex out of the shortest.
+     * we find the longest way to a target vertex out of the shortest.
      * from all the longest path find the minimum out of it and that will be the center.
      *
      * @return the Node data to which the max shortest path to all the other nodes is minimized.
@@ -174,9 +174,9 @@ public class DWGAlgo implements DirectedWeightedGraphAlgorithms {
     /**
      * This function uses shortestPathDist & shortestPath
      * The function run from thr first vertex on the list and examines the shortest path to the rest of the vertices.
-     * we calculate the path from the first to the vertex we reached in the shortest way from the first.
+     * we calculate the list_path from the first to the vertex we reached in the shortest path from the first.
      * then we continue with that vertex and so on.
-     * in each level we Add the path to the list.
+     * in each level we Add the path to the al_list.
      *
      * @param cities
      * @return a list of consecutive nodes which go over all the nodes in cities.

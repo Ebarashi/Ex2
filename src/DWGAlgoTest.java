@@ -106,7 +106,7 @@ class DWGAlgoTest {
         long end = new Date().getTime();
         double time = (end - start) / 1000.0;
         System.out.println(time);
-        assertTrue(time < 200);
+        assertTrue(time < 400);
 
 
     }
@@ -142,7 +142,8 @@ class DWGAlgoTest {
         gr.tsp(other_cities);
         long end = new Date().getTime();
         double time = (end - start) / 1000.0;
-        System.out.println(time);
+        System.out.println("tsp :" + time);
+        assertTrue(time < 600);
 
 
     }

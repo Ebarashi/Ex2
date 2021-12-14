@@ -13,12 +13,11 @@ public class Ex2 {
      * @param json_file - a json file (e.g., G1.json - G3.gson)
      * @return
      */
-    public static DirectedWeightedGraph getGrapg(String json_file) {
+    public static DirectedWeightedGraph getGraph(String json_file) {
         DirectedWeightedGraph ans = new DWGraph();
-        DWGAlgo gAlgo = new DWGAlgo();
-        gAlgo.init(ans);
-        gAlgo.load(json_file);
-        return gAlgo.getGraph();
+        DWGAlgo Algo_g = new DWGAlgo();
+        Algo_g.load(json_file);
+        return Algo_g.getGraph();
     }
     /**
      * This static function will be used to test your implementation
@@ -27,10 +26,9 @@ public class Ex2 {
      */
     public static DirectedWeightedGraphAlgorithms getGrapgAlgo(String json_file) {
         DirectedWeightedGraph ans = new DWGraph();
-        DWGAlgo gAlgo = new DWGAlgo();
-        gAlgo.init(ans);
-        gAlgo.load(json_file);
-        return gAlgo;
+        DWGAlgo Algo_g = new DWGAlgo();
+        Algo_g.load(json_file);
+        return Algo_g;
     }
     /**
      * This static function will run your GUI using the json fime.

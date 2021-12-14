@@ -55,13 +55,13 @@ see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 # The Algorythmes' Results 
 
 
-| Json         | isConnected    | center        | tsp  - cities <all nodes>        |
-| :---         |     :---:      |          ---: |       :---: |
-| G1           | 42 ms          | 45 ms         |             |
-| G2           | 42 ms          | 41 ms         |             |
-| G3           | 44 ms          | 53 ms         |             |
-| 1000         | 144 ms         | 1 sec 310 ms  |             |
-| 10000        | 520 ms         | 3 min 7 sec   |             |
+| Json         | isConnected    | center        | tsp - cities <all nodes>         |
+| :---         |     :---:      |          ---: |       :---:                      |
+| G1           | 42 ms          | 45 ms         |  42 ms                           |
+| G2           | 42 ms          | 41 ms         |  58 ms                           |
+| G3           | 44 ms          | 53 ms         |  84 ms                           |
+| 1000         | 144 ms         | 1 sec 310 ms  |  4 min 29 sec                    |
+| 10000        | 520 ms         | 3 min 7 sec   |    ------------------            |
 
 
 # UML

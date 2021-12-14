@@ -1,5 +1,5 @@
 import api.GeoLocation;
-import org.junit.jupiter.api.Assertions;
+import imp.Geo_Location;
 import org.junit.jupiter.api.Test;
 
 

@@ -1,5 +1,6 @@
+package imp;
+
 import api.*;
-import org.junit.jupiter.api.Test;
 
 public class Edge implements EdgeData{
 
@@ -12,7 +13,7 @@ public class Edge implements EdgeData{
     //constructor
     public Edge(int src, int dst, double weight){
         if(weight<0){
-            throw new RuntimeException("Edge weight must be positive");
+            throw new RuntimeException("imp.Edge weight must be positive");
         }
         this.src = src;
         this.dest = dst;
@@ -59,4 +60,13 @@ public class Edge implements EdgeData{
 
     @Override
     public void setTag(int tag) {this.tag=tag;}
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+                "src=" + src +
+                ", dest=" + dest +
+                ", weight=" + weight +
+                '}';
+    }
 }

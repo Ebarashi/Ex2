@@ -1,16 +1,19 @@
 import api.DirectedWeightedGraph;
 import api.EdgeData;
 import api.NodeData;
+import imp.DWGraph;
+import imp.Geo_Location;
+import imp.Node;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-//there is a problam with juint because each test pass by itself but when we run them as a set some of them fails
+//there is a problam with juint because each test pass by itself
+// but when we run them as a set some of them fails
 class DWGraphTest {
     Node  n1;
     Node n2 ;
@@ -91,16 +94,16 @@ class DWGraphTest {
 
     @Test
         //adds by shallow copy so assert by address is enough
-    void getNode() {
+    void getNode(){
 
-        gr1.addNode(n1);
-        gr1.addNode(n2);
-        gr1.addNode(n3);
+//        gr1.addNode(n1);
+//        gr1.addNode(n2);
+//        gr1.addNode(n3);
         assertEquals(n3,gr1.getNode(2));
 
-        gr2.addNode(n1);
-        gr2.addNode(n2);
-        gr2.addNode(n3);
+//        gr2.addNode(n1);
+//        gr2.addNode(n2);
+//        gr2.addNode(n3);
         assertEquals(n3,gr2.getNode(2));
     }
 
@@ -212,15 +215,12 @@ class DWGraphTest {
         assertEquals(0, temp.getSrc());
         assertEquals(3, temp.getDest());
         assertEquals(9, temp.getWeight());
-
-
-   }
-
+    }
 
 
     @Test
     void removeNode() {
-//hello
+
 //        gr1.addNode(n1);
 //        gr1.addNode(n2);
 //        gr1.addNode(n3);

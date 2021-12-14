@@ -1,5 +1,5 @@
   import api.EdgeData;
-  import api.GeoLocation;
+  import imp.Edge;
   import org.junit.jupiter.api.Test;
 
   import static org.junit.jupiter.api.Assertions.assertTrue;

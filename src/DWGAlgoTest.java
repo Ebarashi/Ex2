@@ -1,11 +1,15 @@
 import api.DirectedWeightedGraph;
 import api.NodeData;
+import imp.DWGAlgo;
+import imp.DWGraph;
+import imp.Geo_Location;
+import imp.Node;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DWGAlgoTest {
 
@@ -17,7 +21,7 @@ class DWGAlgoTest {
     @Test
     void getGraph() {
         DWGAlgo gA = new DWGAlgo();
-        gA.load("C:\\Users\\eilon\\IdeaProjects\\Ex2\\data\\G3.json");
+        gA.load("data\\G3.json");
         DirectedWeightedGraph graph;
         graph = gA.getGraph();
         assertTrue(graph==gA.getGraph());
@@ -36,7 +40,7 @@ class DWGAlgoTest {
     void isConnected() {
         long start = new Date().getTime();
         DWGAlgo gA = new DWGAlgo();
-        gA.load("C:\\Users\\eilon\\IdeaProjects\\Ex2\\data\\10000Nodes.json");
+        gA.load("data\\10000Nodes.json");
         assertEquals(true,gA.isConnected());
         long end = new Date().getTime();
         double time = (end - start) / 1000.0;
@@ -48,7 +52,7 @@ class DWGAlgoTest {
     @Test
     void shortestPathDist() {
         DWGAlgo gA = new DWGAlgo();
-        gA.load("C:\\Users\\eilon\\IdeaProjects\\Ex2\\data\\G3.json");
+        gA.load("data\\G3.json");
         Assertions.assertEquals(1.7420530403455134, gA.shortestPathDist(15, 40));
     }
 
@@ -162,7 +166,7 @@ class DWGAlgoTest {
     @Test
     void load() {
         DWGAlgo gA = new DWGAlgo();
-        boolean ans = gA.load("C:\\Users\\eilon\\IdeaProjects\\Ex2\\data\\G3.json");
+        boolean ans = gA.load("data\\G3.json");
         assertTrue(ans);
 
     }

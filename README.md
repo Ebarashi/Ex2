@@ -7,17 +7,17 @@ By: Eilon Barashi, Harel Giladi
 In this project we have implemented a Directed Weighted Graph,and a GUI that represent a loaded graphs using a JSON file and algorithms. 
 We were asked to be able to generate large graphs up to 10,000 nodes and  to be able to run algorithms efficiently on our graph.
 
-# DWGraph class 
+# imp.DWGraph class 
 This class implement an directional weighted graph using HashMap data structure. 
 It support a large number of nodes (over 100,000). 
 
-DWGraph data structure:
+imp.DWGraph data structure:
 
 nodes- HashMap data structure that represents the group of nodes of this graph.
 
 edges- HashMap data structure that represents for each node a group of directed edges from him in this graph.
 
-# DWGAlgo class 
+# imp.DWGAlgo class 
 This class represents a directed weighted Graph and implement algorithms.
 
 **_Algorithms_:**

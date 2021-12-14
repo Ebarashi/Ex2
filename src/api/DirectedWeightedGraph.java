@@ -1,4 +1,6 @@
 package api;
+import Gui.myFrame;
+
 import java.util.Iterator;
 /**
  * This interface represents a Directional Weighted Graph,
@@ -57,6 +59,9 @@ public interface  DirectedWeightedGraph {
 	 * @return Iterator<EdgeData>
 	 */
 	public Iterator<EdgeData> edgeIter(int node_id);
+
+
+
 
 	/**
 	 * Deletes the node (with the given ID) from the graph -

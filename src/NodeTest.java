@@ -1,5 +1,7 @@
 import api.GeoLocation;
 import api.NodeData;
+import imp.Geo_Location;
+import imp.Node;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,8 +20,8 @@ public class NodeTest {
 
     @Test
     void getTag() {
-        assertEquals(0, n2.getTag());
-        assertEquals(0, n0.getTag());
+        assertEquals(-1, n2.getTag());
+        assertEquals(-1, n0.getTag());
     }
     @Test
     void getLocation() {

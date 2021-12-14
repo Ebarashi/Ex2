@@ -44,10 +44,12 @@ This class represents a directed weighted Graph and implement algorithms.
   see: https://en.wikipedia.org/wiki/Travelling_salesman_problem
 
  # Helper algo
-+ BFS - an algorithm for traversing or searching graph data structures. The method checks whether or not the graph is strongly linked, in other words it checks whether there is a path between node to each other node. 
++ BFS - The algorithm checks whether or not the graph is strongly linked, in other words it checks whether there is a path between node to each other node. 
+
 see: https://en.wikipedia.org/wiki/Breadth-first_search
 
 + Dijkstra's algorithm - an algorithm for finding the shortest paths between nodes in a graph. The method uses the weight of each node to update his current distance from the source node.
+
 see: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 # The Algorythmes' Results 

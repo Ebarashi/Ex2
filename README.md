@@ -1,4 +1,4 @@
-# Ex2
+# GraphMaster
 
 By: Eilon Barashi, Harel Giladi
 
